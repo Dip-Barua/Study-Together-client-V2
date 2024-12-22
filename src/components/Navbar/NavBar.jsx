@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { authContext } from "../AuthProvider/AuthProvider";
+import logo from "../../assets/logo.png";
 
 const NavBar = () => {
   const { user, handleLogout } = useContext(authContext);
   return (
     <div>
-      <div className="navbar bg-base-100 w-11/12 mx-auto bg-transparent">
+      <div className="navbar bg-base-100 w-10/12 mx-auto py-8 bg-transparent">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,15 +46,15 @@ const NavBar = () => {
           )}
             </ul>
           </div>
-          <a className="btn btn-ghost mx-16 w-full sm:w-5/12"><img  alt="Logo" /></a>
+          <a className=" mx-16 w-full sm:w-3/12 sm:max-w-64 sm:min-w-48"><img src={logo} alt="Logo" /></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-xl  bg-transparent active:bg-transparent">
             <li><NavLink to="/" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Home</NavLink></li>
             <li><NavLink to="/about" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>About</NavLink></li>
-            <li><NavLink to="/campaign" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Donation Campaigns</NavLink></li>
-            <li><NavLink to="/help" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>How To Help</NavLink></li>
-            <li><NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Dashboard</NavLink></li>
+            <li><NavLink to="/assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Assignments</NavLink></li>
+            <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>
+            <li><NavLink to="/userprofile" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>User Profile</NavLink></li>
           </ul>
         </div>
         <div className="navbar-end gap-10 mx-10 hidden lg:flex">
