@@ -32,9 +32,13 @@ const SignIn = () => {
 
     handleLogin(email, password)
       .then((res) => {
-        const redirectTo = location.state?.from || "/";
-        navigate(redirectTo);
-        setError("");
+        
+        toast.success("User Logged In Successfully.");
+
+        setTimeout(() => {
+          const redirectTo = location.state?.from || "/";
+          navigate(redirectTo);
+        }, 2000);
       })
       .catch((err) => {
         if (err.code === "auth/wrong-password" || err.code === "auth/user-not-found") {
