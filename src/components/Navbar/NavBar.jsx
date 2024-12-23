@@ -1,10 +1,18 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../AuthProvider/AuthProvider";
 import logo from "../../assets/logo.png";
+import { Tooltip } from 'react-tooltip'
 
 const NavBar = () => {
   const { user, handleLogout } = useContext(authContext);
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setDropdownVisible((prevState) => !prevState);
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100 w-10/12 mx-auto py-4 bg-transparent">
@@ -34,36 +42,45 @@ const NavBar = () => {
               <li><NavLink to="/dashboard">Dashboard</NavLink></li>
 
               {user?.email ? (
-              <li>              <NavLink to="/" onClick={handleLogout} className=" text-xl font-bold">Logout</NavLink>
-</li>
-          ) : (
-            <div >
-              <li>              <NavLink to="/login" className="mx-5 my-2 btn sm:text-xl font-bold">Login</NavLink>
-</li>
-<li>              <NavLink to="/register" className="btn mx-5 my-2 sm:text-xl font-bold">Register</NavLink>
-</li>
-            </div>
-          )}
+                <li><NavLink to="/" onClick={handleLogout} className="text-xl font-bold">Logout</NavLink></li>
+              ) : (
+                <div>
+                  <li><NavLink to="/login" className="mx-5 my-2 btn sm:text-xl font-bold">Login</NavLink></li>
+                  <li><NavLink to="/register" className="btn mx-5 my-2 sm:text-xl font-bold">Register</NavLink></li>
+                </div>
+              )}
             </ul>
           </div>
-          <a className=" mx-16 w-full sm:w-3/12 sm:max-w-64 sm:min-w-48"><img src={logo} alt="Logo" /></a>
+          <a className=" mx-16 w-full sm:w-3/12 sm:max-w-64 sm:min-w-48">
+            <img src={logo} alt="Logo" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-xl  bg-transparent active:bg-transparent">
+          <ul className="menu menu-horizontal px-1 text-xl bg-transparent active:bg-transparent">
             <li><NavLink to="/" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Home</NavLink></li>
             <li><NavLink to="/about" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>About</NavLink></li>
             <li><NavLink to="/assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Assignments</NavLink></li>
             <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>
-            <li><NavLink to="/userprofile" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>User Profile</NavLink></li>
+            {/* <li><NavLink to="/userprofile" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>User Profile</NavLink></li> */}
           </ul>
         </div>
         <div className="navbar-end gap-10 mx-10 hidden lg:flex">
           {user?.email ? (
-            <div className="flex navbar-end gap-5 mx-10">
-              <NavLink to="/dashboard">
-                <img src={user.photoURL} className="rounded-full w-16 h-16" alt="User" />
-              </NavLink>
-              <NavLink to="/" onClick={handleLogout} className="btn text-xl font-bold">Logout</NavLink>
+            <div className="flex navbar-end gap-5 mx-10 relative">
+              <button onClick={toggleDropdown}>
+                <img src={user.photoURL} className="rounded-full w-16 h-16" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} alt="User" />
+              </button>
+              {isDropdownVisible && (
+                <div className="dropdown-content bg-white shadow-lg rounded-box w-58 absolute right-0 mt-16 z-50">
+                  <ul className="p-2">
+                    <li><NavLink to="/" className="block py-1 px-2">Create Assignment</NavLink></li>
+                    <li><NavLink to="/" className="block py-1 px-2">My Attempted Assignment</NavLink></li>
+                    <li><NavLink to="/update-user" className="block py-1 px-2">Update Profile</NavLink></li>
+                  </ul>
+                </div>
+              )}
+                            <NavLink to="/" onClick={handleLogout} className="btn text-xl font-bold">Logout</NavLink>
+
             </div>
           ) : (
             <div className="sm:gap-10 mx-10">
@@ -73,6 +90,8 @@ const NavBar = () => {
           )}
         </div>
       </div>
+      <Tooltip id="my-tooltip" className="z-10"/>
+
     </div>
   );
 };
