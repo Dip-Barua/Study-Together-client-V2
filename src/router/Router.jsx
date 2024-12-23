@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Register from "../Register/Register";
 import SignIn from "../SignIn/SignIn";
 import Error from "../components/Error/Error";
+import UpdateProfile from "../UpdateProfile/UpdateProfile";
 
   const router = createBrowserRouter([
     {
@@ -18,6 +19,8 @@ import Error from "../components/Error/Error";
              element: <Register/> },
         { path: "/login",
              element: <SignIn/> },
+        { path: "/update-user",
+             element: <UpdateProfile/> },
 
  
       ],
