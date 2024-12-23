@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -53,20 +55,27 @@ const Register = () => {
     setIsLoading(true); 
 
     handleRegister(email, password)
-      .then((res) => {
+    .then((res) => {
+        console.log("Registration successful:", res);
         manageProfile(name, image)
           .then(() => {
             setIsLoading(false);
-            navigate("/");
+            toast.success("Registration successful!");
+            setTimeout(() => {
+              navigate("/");
+            }, 2000); 
+            
           })
           .catch((error) => {
             setIsLoading(false);
             console.error("Error managing profile:", error);
+            toast.error("Error managing profile.");
           });
       })
       .catch((error) => {
         setIsLoading(false);
         console.error("Error registering:", error);
+        toast.error("Registration failed.");
       });
   };
 
@@ -192,6 +201,16 @@ const Register = () => {
           </div>
         </div>
       )}
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
