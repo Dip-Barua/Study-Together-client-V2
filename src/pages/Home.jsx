@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Faq from '../components/Faq/Faq';
 
 
 const Home = () => {
@@ -189,6 +190,7 @@ const Home = () => {
 
 
             </div>
+            <Faq></Faq>
         </div>
     );
 };
