@@ -73,7 +73,7 @@ const NavBar = () => {
               {isDropdownVisible && (
                 <div className="dropdown-content bg-white shadow-lg rounded-box w-58 absolute right-0 mt-16 z-50">
                   <ul className="p-2">
-                    <li><NavLink to="/" className="block py-1 px-2">Create Assignment</NavLink></li>
+                    <li><NavLink to="/create-assignment" className="block py-1 px-2">Create Assignment</NavLink></li>
                     <li><NavLink to="/" className="block py-1 px-2">My Attempted Assignment</NavLink></li>
                     <li><NavLink to="/update-user" className="block py-1 px-2">Update Profile</NavLink></li>
                   </ul>

@@ -6,6 +6,8 @@ import Register from "../Register/Register";
 import SignIn from "../SignIn/SignIn";
 import Error from "../components/Error/Error";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
+import CreateAssignment from "../pages/CreateAssignment";
+import Assignments from "../pages/Assignments";
 
   const router = createBrowserRouter([
     {
@@ -21,6 +23,10 @@ import UpdateProfile from "../UpdateProfile/UpdateProfile";
              element: <SignIn/> },
         { path: "/update-user",
              element: <UpdateProfile/> },
+        { path: "/create-assignment",
+             element: <CreateAssignment/> },
+        { path: "/assignments",
+             element: <Assignments/> },
 
  
       ],
