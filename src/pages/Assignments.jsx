@@ -8,6 +8,7 @@ const Assignments = () => {
     const { user } = useContext(authContext);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         fetch('http://localhost:5000/assignments')
             .then(res => res.json())
@@ -99,6 +100,7 @@ const Assignments = () => {
             );
             return;
         }
+
 
         navigate(`/update-assignment/${assignmentId}`);
     };
