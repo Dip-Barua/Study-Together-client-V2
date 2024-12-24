@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { authContext } from '../components/AuthProvider/AuthProvider';
 
 const Assignments = () => {
     const [assignments, setAssignments] = useState([]);
     const { user } = useContext(authContext);
     const navigate = useNavigate();
-
 
     useEffect(() => {
         fetch('http://localhost:5000/assignments')
@@ -51,33 +50,33 @@ const Assignments = () => {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ userEmail: user.email }), 
+                    body: JSON.stringify({ userEmail: user.email }),
                 })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.message === 'Assignment deleted successfully') {
-                        setAssignments(assignments.filter(assignment => assignment._id !== assignmentId));
-                        Swal.fire(
-                            'Deleted!',
-                            'The assignment has been deleted.',
-                            'success'
-                        );
-                    } else {
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.message === 'Assignment deleted successfully') {
+                            setAssignments(assignments.filter(assignment => assignment._id !== assignmentId));
+                            Swal.fire(
+                                'Deleted!',
+                                'The assignment has been deleted.',
+                                'success'
+                            );
+                        } else {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred while deleting the assignment.',
+                                'error'
+                            );
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
                         Swal.fire(
                             'Error!',
                             'An error occurred while deleting the assignment.',
                             'error'
                         );
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    Swal.fire(
-                        'Error!',
-                        'An error occurred while deleting the assignment.',
-                        'error'
-                    );
-                });
+                    });
             }
         });
     };
@@ -101,8 +100,24 @@ const Assignments = () => {
             return;
         }
 
-
         navigate(`/update-assignment/${assignmentId}`);
+    };
+
+    const handleViewAssignment = (assignmentId) => {
+        if (!user) {
+            Swal.fire(
+                'Error!',
+                'You need to be logged in to view the assignment.',
+                'error'
+            );
+            setTimeout(() => {
+                const redirectTo = location.state?.from || "/login";
+                navigate(redirectTo);
+              }, 2000);
+            return;
+        }
+
+        navigate(`/view-assignment/${assignmentId}`);
     };
 
     return (
@@ -123,19 +138,24 @@ const Assignments = () => {
                             (view assignment to read more)
                         </p>
                         <div className="mt-4 flex justify-around relative">
-                            <button 
+                            <button
                                 className="btn btn-outline btn-success"
                                 onClick={() => handleDelete(assignment._id, assignment.createdBy.email)}
                             >
                                 Delete
                             </button>
-                            <button 
+                            <button
                                 className="btn btn-outline btn-success"
                                 onClick={() => handleUpdate(assignment._id, assignment.createdBy.email)}
                             >
                                 Update
                             </button>
-                            <button className="btn btn-outline btn-success">View Assignment</button>
+                            <button
+                                className="btn btn-outline btn-success"
+                                onClick={() => handleViewAssignment(assignment._id)}
+                            >
+                                View Assignment
+                            </button>
                         </div>
                     </div>
                 ))}
