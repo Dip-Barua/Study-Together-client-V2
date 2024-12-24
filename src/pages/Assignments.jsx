@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom'; // For navigation
 import { authContext } from '../components/AuthProvider/AuthProvider';
 
 const Assignments = () => {
     const [assignments, setAssignments] = useState([]);
     const { user } = useContext(authContext);
+    const navigate = useNavigate(); // Hook to navigate to other routes
 
     useEffect(() => {
         fetch('http://localhost:5000/assignments')
@@ -79,6 +81,29 @@ const Assignments = () => {
         });
     };
 
+    const handleUpdate = (assignmentId, createdByEmail) => {
+        if (!user) {
+            Swal.fire(
+                'Error!',
+                'You need to be logged in to complete this action.',
+                'error'
+            );
+            return;
+        }
+
+        if (user.email !== createdByEmail) {
+            Swal.fire(
+                'Unauthorized!',
+                'You are not authorized to update this assignment.',
+                'error'
+            );
+            return;
+        }
+
+        // Redirect to the update page
+        navigate(`/update-assignment/${assignmentId}`);
+    };
+
     return (
         <div className='py-20'>
             <h1 className='text-5xl text-center my-5 font-bold'>Assignments</h1>
@@ -103,7 +128,12 @@ const Assignments = () => {
                             >
                                 Delete
                             </button>
-                            <button className="btn btn-outline btn-success">Update</button>
+                            <button 
+                                className="btn btn-outline btn-success"
+                                onClick={() => handleUpdate(assignment._id, assignment.createdBy.email)}
+                            >
+                                Update
+                            </button>
                             <button className="btn btn-outline btn-success">View Assignment</button>
                         </div>
                     </div>
