@@ -3,9 +3,10 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Swal from 'sweetalert2';
 import { authContext } from '../components/AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const CreateAssignment = () => {
-    const { user } = useContext(authContext); // Get the logged-in user data
+    const { user } = useContext(authContext); 
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -15,7 +16,7 @@ const CreateAssignment = () => {
         dueDate: new Date(),
     });
 
-    const handleChange = (e) => {
+    const handleChange =  (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -24,7 +25,7 @@ const CreateAssignment = () => {
         setFormData({ ...formData, dueDate: date });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!formData.title || !formData.description || !formData.marks || !formData.thumbnail || !formData.difficulty) {
@@ -43,34 +44,56 @@ const CreateAssignment = () => {
                 name: user?.displayName || 'Anonymous',
             },
         };
-
-        console.log('Assignment Created:', assignmentData);
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Assignment Created Successfully!',
-            text: `Title: ${assignmentData.title}`,
-        });
-
-        // Reset the form
-        setFormData({
-            title: '',
-            description: '',
-            marks: '',
-            thumbnail: '',
-            difficulty: '',
-            dueDate: new Date(),
-        });
+    
+        try {
+            const response = await fetch('http://localhost:5000/assignments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(assignmentData),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Assignment Created Successfully!',
+                    text: `Title: ${assignmentData.title}`,
+                });
+    
+                setFormData({
+                    title: '',
+                    description: '',
+                    marks: '',
+                    thumbnail: '',
+                    difficulty: '',
+                    dueDate: new Date(),
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data.message || 'Something went wrong!',
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Failed to create assignment!',
+            });
+        }
     };
-
     return (
         <div className='py-16'>
+            <Helmet><title>Create Assignment</title></Helmet>
             <h2 className="text-5xl font-bold text-center my-5">Create Assignment</h2>
             <div className="max-w-xl mx-auto mt-10 p-5 rounded-xl shadow-lg">
                 <form onSubmit={handleSubmit}>
 
 
-                    {/* Form Fields */}
                     <div className="mb-4">
                         <label htmlFor="title" className="block text-2xl font-medium mb-1">Title</label>
                         <input
