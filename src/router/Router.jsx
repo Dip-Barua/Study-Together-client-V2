@@ -8,6 +8,7 @@ import Error from "../components/Error/Error";
 import UpdateProfile from "../UpdateProfile/UpdateProfile";
 import CreateAssignment from "../pages/CreateAssignment";
 import Assignments from "../pages/Assignments";
+import UpdateAssignment from "../pages/UpdateAssignment";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +28,8 @@ import Assignments from "../pages/Assignments";
              element: <CreateAssignment/> },
         { path: "/assignments",
              element: <Assignments/> },
+        { path: "/update-assignment/:id",
+             element: <UpdateAssignment/> },
 
  
       ],
