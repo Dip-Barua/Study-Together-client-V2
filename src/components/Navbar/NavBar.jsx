@@ -21,7 +21,7 @@ const NavBar = () => {
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
+                className="h-7 w-7 mr-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -37,9 +37,11 @@ const NavBar = () => {
               className="menu menu-sm dropdown-content bg-white rounded-box z-50 mt-3 w-52 p-2 shadow-lg">
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/about">About</NavLink></li>
-              <li><NavLink to="/campaign">Donation Campaigns</NavLink></li>
-              <li><NavLink to="/help">How To Help</NavLink></li>
-              <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+              <li><NavLink to="/assignments">Assignments</NavLink></li>
+              <li><NavLink to="/pending-assignments">Pending Assignments</NavLink></li>
+              <li><NavLink to="/create-assignment">Create Assignment</NavLink></li>
+              <li><NavLink to="/my-attempted-assignment">My Attempted Assignment</NavLink></li>
+              <li><NavLink to="/update-user">Update Profile</NavLink></li>
 
               {user?.email ? (
                 <li><NavLink to="/" onClick={handleLogout} className="text-xl font-bold">Logout</NavLink></li>
@@ -51,10 +53,13 @@ const NavBar = () => {
               )}
             </ul>
           </div>
-          <a className=" mx-16 w-full sm:w-3/12 sm:max-w-64 sm:min-w-48">
+          <a className="hidden sm:block sm:mx-16 w-full z-10 sm:w-3/12 sm:max-w-64 sm:min-w-48">
             <img src={logo} alt="Logo" />
           </a>
         </div>
+        <a className=" block sm:hidden sm:mx-16 w-6/12 z-10 sm:w-3/12 sm:max-w-64 sm:min-w-48">
+            <img src={logo} alt="Logo" />
+          </a>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-xl bg-transparent active:bg-transparent">
             <li><NavLink to="/" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Home</NavLink></li>

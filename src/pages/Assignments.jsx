@@ -140,7 +140,7 @@ const Assignments = () => {
                                 {assignment.description.slice(0, 100)}... <br />
                                 (view assignment to read more)
                             </p>
-                            <div className="mt-4 flex justify-around relative">
+                            <div className="mt-4 gap-2 flex-wrap flex justify-around relative">
                                 <button
                                     className="btn btn-outline btn-success"
                                     onClick={() => handleDelete(assignment._id, assignment.createdBy.email)}

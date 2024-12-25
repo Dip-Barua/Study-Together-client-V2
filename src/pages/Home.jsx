@@ -32,20 +32,20 @@ const Home = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-pink-600 to-black opacity-70 rounded-2xl"></div>
     </div>
 
-    <div className="absolute inset-0 flex justify-center items-center w-full h-full">
-      <div className="w-6/12 flex flex-col mx-auto">
-        <h1 className="text-white text-5xl pb-8 mx-auto font-bold leading-snug">
+    <div className="absolute inset-0 flex flex-col-reverse sm:flex-row justify-center items-center w-full h-full">
+      <div className="w-11/12 text-center sm:text-start sm:w-6/12 flex flex-col mx-auto">
+        <h1 className="text-white text-xl sm:text-5xl pb-8 mx-auto font-bold leading-snug">
           Study Together <br /> With A Global Community <br /> and study with students <br /> from all over the world 🌍
         </h1>
-        <NavLink to="/register" className='btn btn-outline text-white w-3/12 mx-auto text-2xl font-bold text-center'>
+        <NavLink to="/register" className='btn btn-outline text-white w-6/12 sm:w-3/12 mx-auto text-xl sm:text-2xl font-bold text-center'>
          Join Us Now!
         </NavLink>
 
       </div>
 
-      <div className="w-6/12 ">
+      <div className="w-11/12 sm:w-6/12 mb-6">
         <video
-          className="w-8/12 h-80 mx-auto bg-black object-cover rounded-2xl"
+          className="w-full sm:w-8/12 h-36 sm:h-80 mx-auto bg-black object-cover rounded-2xl"
           autoPlay
           loop
           muted
@@ -60,34 +60,34 @@ const Home = () => {
 
             </div>
 
-            <div className="py-28 "> 
-                <h2 className="text-3xl font-bold text-center">Our community is of more than <span className="text-red-500">1M+</span> Active Students From</h2>
-                <div className="flex w-8/12 mt-16 mx-auto justify-between">
-    <div className=" w-1/12 h-16">
+            <div className="py-28 w-11/12 sm:w-full mx-auto"> 
+                <h2 className=" text-xl sm:text-3xl font-bold text-center">Our community is of more than <span className="text-red-500">1M+</span> Active Students From</h2>
+                <div className="grid grid-cols-5 gap-2 sm:flex w-8/12 mt-16 mx-auto justify-between">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16">
         <img src="https://th.bing.com/th/id/OIP.bpn17ZoFze_aUDNkzXTrHAHaEc?r" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.sw-nmSO4L_nTPi5sQVWDawHaDt?" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIF.Ny2srlQwNCVKeCUOuCMNYw?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.xp_gP4N6JVcGfHcGVr7acgHaD6?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.3tCkgLFjGaPU__KXOCv2zQHaE8?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.BMpXupmawPAhoyGE_anB6gHaE3?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.ugCCUr3tUcmQTXNTUNhGLAHaDt?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.mO2EfRE-TxiZgZ20kE6aOwHaE7?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
-    <div className=" w-1/12 h-16 border-gray-500 border">
+    <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.1CtpFkSvEbunyzbZY7H0_AHaFN?w=1004&h=706&rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
     </div>
 </div>
