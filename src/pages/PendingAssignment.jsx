@@ -22,6 +22,8 @@ const PendingAssignment = () => {
     fetch(`http://localhost:5000/pending-assignments?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+
         if (data.success) {
           setPendingAssignments(data.submissions);
         } else {
@@ -105,9 +107,9 @@ const PendingAssignment = () => {
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table w-10/12 mx-auto text-center">
             <thead>
-              <tr>
+              <tr className='text-2xl font-bold text-black'>
                 <th>Assignment Title</th>
                 <th>Original Marks</th>
                 <th>Obtained Marks</th>
@@ -116,23 +118,25 @@ const PendingAssignment = () => {
               </tr>
             </thead>
             <tbody>
-              {pendingAssignments.map((assignment) => (
-                <tr key={assignment._id}>
-                  <td>{assignment.assignmentId}</td>
-                  <td>{assignment.marks}</td> 
-                  <td>{assignment.obtainedMarks || 'N/A'}</td> 
-                  <td>{assignment.userName}</td>
-                  <td>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => openModal(assignment)}
-                    >
-                      Give Marks
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+  {pendingAssignments.map((assignment) => (
+    <tr key={assignment._id}>
+      <td>{assignment.assignmentTitle}</td>
+      <td>{assignment.marks}</td>
+      <td>{assignment.obtainedMarks || 'N/A'}</td>
+      <td>{assignment.userName}</td>
+      <td>
+        <button
+          className="btn btn-primary"
+          onClick={() => openModal(assignment)}
+        >
+          Give Marks
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+
           </table>
         </div>
       )}

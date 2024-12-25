@@ -8,7 +8,6 @@ const MyAttemptedAssignment = () => {
 
     useEffect(() => {
         if (!user) {
-            Swal.fire('Error!', 'Please log in to view your assignments.', 'error');
             return;
         }
 
@@ -33,13 +32,13 @@ const MyAttemptedAssignment = () => {
             <h1 className="text-5xl font-bold text-center my-12">My Attempted Assignments</h1>
 
             {submissions.length === 0 ? (
-                <p>No assignments found.</p>
-            ) : (
+    <p className='text-center'><span class="loading loading-spinner loading-xl"></span>
+</p>            ) : (
                 <div className="overflow-x-auto">
-                    <table className="table w-full">
+                    <table className="table w-10/12 mx-auto text-center">
                         <thead>
-                            <tr>
-                                <th>Assignment Title</th>
+                        <tr className='text-2xl font-bold text-black'>
+                        <th>Assignment Title</th>
                                 <th>Status</th>
                                 <th>Marks</th>
                                 <th>Obtained Marks</th>
@@ -49,7 +48,7 @@ const MyAttemptedAssignment = () => {
                         <tbody>
                             {submissions.map((submission) => (
                                 <tr key={submission._id}>
-                                    <td>{submission.assignmentId}</td>
+                                    <td>{submission.assignmentTitle}</td>
                                     <td>{submission.status}</td>
                                     <td>{submission.marks || "Not available"}</td>
                                     <td>{submission.obtainedMarks || "Not available"}</td>
