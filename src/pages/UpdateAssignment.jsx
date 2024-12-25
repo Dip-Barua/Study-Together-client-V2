@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const UpdateAssignment = () => {
   const { id } = useParams();
@@ -32,7 +34,7 @@ const UpdateAssignment = () => {
           marks: data.marks,
           difficulty: data.difficulty,
           thumbnail: data.thumbnail,
-          dueDate: data.dueDate,
+          dueDate: data.dueDate ? new Date(data.dueDate) : new Date(), 
           createdBy: data.createdBy,
         });
         setLoading(false);
@@ -45,12 +47,12 @@ const UpdateAssignment = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-  
+
     if (!assignment.title || !assignment.description || !assignment.marks || !assignment.difficulty) {
       Swal.fire('Error!', 'Please fill all fields.', 'error');
       return;
     }
-  
+
     fetch(`http://localhost:5000/assignments/${id}`, {
       method: 'PUT',
       headers: {
@@ -82,7 +84,7 @@ const UpdateAssignment = () => {
         <meta name="description" content="Update assignment details" />
       </Helmet>
 
-      <h2 className='text-center text-5xl font-semibold my-8'>Live Preview</h2>
+      <h2 className="text-center text-5xl font-semibold my-8">Live Preview</h2>
 
       <div className="bg-border mb-20 p-2 sm:p-5 border-2 w-11/12 sm:w-8/12 text-center mx-auto rounded-3xl backdrop-blur-md">
         <div className="card lg:card-side p-4 bg-base-100 shadow-xl gap-10">
@@ -102,7 +104,7 @@ const UpdateAssignment = () => {
               <span className="font-bold text-md text-black sm:text-xl">Marks:</span> {assignment.marks}
             </p>
             <p className="text-md sm:text-xl font-bold text-gray-500">
-              <span className="font-bold text-md sm:text-xl text-black">Due Date:</span> {assignment.dueDate}
+              <span className="font-bold text-md sm:text-xl text-black">Due Date:</span> {assignment.dueDate.toLocaleDateString()}
             </p>
 
             <div className="card-actions justify-start">
@@ -157,7 +159,7 @@ const UpdateAssignment = () => {
             Thumbnail URL
           </label>
           <input
-            type="text"
+            type="url"
             id="thumbnail"
             name="thumbnail"
             value={assignment.thumbnail}
@@ -179,6 +181,7 @@ const UpdateAssignment = () => {
             onChange={(e) => setAssignment({ ...assignment, marks: e.target.value })}
             placeholder="Marks"
             className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            min={0}
           />
         </div>
 
@@ -192,6 +195,7 @@ const UpdateAssignment = () => {
             value={assignment.difficulty || ''}
             onChange={(e) => setAssignment({ ...assignment, difficulty: e.target.value })}
             className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            required
           >
             <option value="">Select Difficulty Level</option>
             <option value="Easy">Easy</option>
@@ -204,13 +208,12 @@ const UpdateAssignment = () => {
           <label htmlFor="dueDate" className="block text-lg sm:text-xl font-bold text-black">
             Due Date
           </label>
-          <input
-            type="date"
-            id="dueDate"
-            name="dueDate"
-            value={assignment.dueDate}
-            onChange={(e) => setAssignment({ ...assignment, dueDate: e.target.value })}
+          <DatePicker
+            selected={assignment.dueDate}
+            onChange={(date) => setAssignment({ ...assignment, dueDate: date })}
             className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            minDate={new Date()}
+            dateFormat="yyyy/MM/dd"
           />
         </div>
 
@@ -224,7 +227,7 @@ const UpdateAssignment = () => {
             name="createdBy"
             value={assignment.createdBy.name}
             disabled
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-6/12 p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
           />
           <input
             type="email"
@@ -232,11 +235,9 @@ const UpdateAssignment = () => {
             name="createdByEmail"
             value={assignment.createdBy.email}
             disabled
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-6/12 p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
           />
         </div>
-
-
 
         <div className="text-center">
           <button
