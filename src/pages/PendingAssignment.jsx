@@ -95,7 +95,14 @@ const PendingAssignment = () => {
         Swal.fire('Error!', 'Failed to submit marks and feedback.', 'error');
       });
   };
-  
+
+  const formatUrl = (url) => {
+    if (!url) return '';
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return `http://${url}`;
+    }
+    return url;
+  };
 
   return (
     <div>
@@ -118,25 +125,23 @@ const PendingAssignment = () => {
               </tr>
             </thead>
             <tbody>
-  {pendingAssignments.map((assignment) => (
-    <tr key={assignment._id}>
-      <td>{assignment.assignmentTitle}</td>
-      <td>{assignment.marks}</td>
-      <td>{assignment.obtainedMarks || 'N/A'}</td>
-      <td>{assignment.userName}</td>
-      <td>
-        <button
-          className="btn btn-primary"
-          onClick={() => openModal(assignment)}
-        >
-          Give Marks
-        </button>
-      </td>
-    </tr>
-  ))}
-</tbody>
-
-
+              {pendingAssignments.map((assignment) => (
+                <tr key={assignment._id}>
+                  <td>{assignment.assignmentTitle}</td>
+                  <td>{assignment.marks}</td>
+                  <td>{assignment.obtainedMarks || 'N/A'}</td>
+                  <td>{assignment.userName}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => openModal(assignment)}
+                    >
+                      Give Marks
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       )}
@@ -147,7 +152,7 @@ const PendingAssignment = () => {
             <h2 className="text-2xl font-bold mb-4">Grade Assignment</h2>
             <p>
               <a
-                href={selectedAssignment?.googleDocLink}
+                href={formatUrl(selectedAssignment?.googleDocLink)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500"

@@ -60,7 +60,8 @@ const NavBar = () => {
             <li><NavLink to="/" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Home</NavLink></li>
             <li><NavLink to="/about" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>About</NavLink></li>
             <li><NavLink to="/assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Assignments</NavLink></li>
-            <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>
+            {user?.email ? (
+            <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>): <></> }
             {/* <li><NavLink to="/userprofile" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>User Profile</NavLink></li> */}
           </ul>
         </div>

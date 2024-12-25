@@ -90,7 +90,7 @@ const CreateAssignment = () => {
         <div className='py-16'>
             <Helmet><title>Create Assignment</title></Helmet>
             <h2 className="text-5xl font-bold text-center my-5">Create Assignment</h2>
-            <div className="max-w-xl mx-auto mt-10 p-5 rounded-xl shadow-lg">
+            <div className="max-w-3xl mx-auto mt-10 p-5 rounded-2xl shadow-lg">
                 <form onSubmit={handleSubmit}>
 
 
