@@ -129,13 +129,14 @@ const CreateAssignment = () => {
                             onChange={handleChange}
                             className="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring focus:ring-blue-300"
                             placeholder="Enter assignment marks"
+                            min={0}
                         />
                     </div>
 
                     <div className="mb-4">
                         <label htmlFor="thumbnail" className="block text-xl font-medium mb-1">Thumbnail Image URL</label>
                         <input
-                            type="text"
+                            type="url"
                             id="thumbnail"
                             name="thumbnail"
                             value={formData.thumbnail}
@@ -153,6 +154,7 @@ const CreateAssignment = () => {
                             value={formData.difficulty}
                             onChange={handleChange}
                             className="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring focus:ring-blue-300"
+                            required
                         >
                             <option value="" disabled>Select difficulty</option>
                             <option value="easy">Easy</option>
@@ -167,7 +169,7 @@ const CreateAssignment = () => {
                             selected={formData.dueDate}
                             onChange={handleDateChange}
                             className="w-full px-3 py-2 border rounded-xl focus:outline-none focus:ring focus:ring-blue-300"
-                        />
+                            minDate={new Date()}                        />
                     </div>
 <div className='flex w-full justify-around'>
 <div className="mb-4">
