@@ -50,7 +50,7 @@ const Faq = () => {
   return (
     <div className="py-16 ">
       <div className="text-center w-10/12 sm:w-8/12 mx-auto py-16 px-4 sm:px-10  rounded-3xl bg-base-200 shadow-md">
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-8">Frequently Asked Questions</h1>
+        <h1 className="text-3xl sm:text-5xl font-bold  mb-8">Frequently Asked Questions</h1>
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-200">
@@ -58,8 +58,8 @@ const Faq = () => {
                 className="cursor-pointer flex justify-between items-center py-4"
                 onClick={() => toggleAnswer(index)}
               >
-                <h3 className="text-xl sm:text-2xl font-medium text-gray-800">{faq.question}</h3>
-                <span className="text-xl text-gray-600">
+                <h3 className="text-xl sm:text-2xl font-medium ">{faq.question}</h3>
+                <span className="text-xl ">
                   {activeIndex === index ? '-' : '+'}
                 </span>
               </div>

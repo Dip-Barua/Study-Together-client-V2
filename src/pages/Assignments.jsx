@@ -121,7 +121,7 @@ const Assignments = () => {
             <div className="grid w-11/12 sm:w-9/12 mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredAssignments.length > 0 ? (
                     filteredAssignments.map((assignment) => (
-                        <div key={assignment._id} className="bg-white p-4 rounded-2xl shadow-md w-11/12 leading-7">
+                        <div key={assignment._id} className=" p-4 rounded-2xl shadow-md w-11/12 leading-7">
                             <img
                                 src={assignment.thumbnail}
                                 alt={assignment.title}

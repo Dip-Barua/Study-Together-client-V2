@@ -39,7 +39,7 @@ const UpdateProfile = () => {
     <div className="container mx-auto p-8 ">
       <h1 className="text-4xl font-bold text-center mb-6">Update Profile</h1>
 
-      <form onSubmit={handleUpdate} className="max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-xl">
+      <form onSubmit={handleUpdate} className="max-w-lg mx-auto p-6 rounded-2xl shadow-xl">
         <div className="form-control mb-4">
           <label className="label" htmlFor="name">
             <span className="label-text">Name</span>

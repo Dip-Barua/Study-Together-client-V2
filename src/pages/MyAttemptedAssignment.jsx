@@ -37,7 +37,7 @@ const MyAttemptedAssignment = () => {
                 <div className="overflow-x-auto">
                     <table className="table w-10/12 mx-auto text-center">
                         <thead>
-                        <tr className='text-2xl font-bold text-black'>
+                        <tr className='text-2xl font-bold '>
                         <th>Assignment Title</th>
                                 <th>Status</th>
                                 <th>Marks</th>

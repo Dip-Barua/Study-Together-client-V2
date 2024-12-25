@@ -6,7 +6,7 @@ const Footer = () => {
     return (
 
 
-<div className='bg-gray-100 pt-20 pb-10 flex flex-col' >
+<div className=' pt-20 pb-10 flex flex-col' >
 <div >
                 <h1 className='text-3xl font-bold text-center'><img src={logo} className="mx-auto w-4/12 sm:w-52" alt="" /></h1>
                 <p className=' mt-5 font-bold text-gray-500 text-center w-9/12 mx-auto sm:w-full text-wrap'> <span className='text-rose-500 text-2xl'>"StudyTogether"</span>is 
@@ -73,7 +73,7 @@ const Footer = () => {
                   </button>
                 </div>
         </p>
-<p className="text-center text-sm sm:text-lg text-slate-700 ">
+<p className="text-center text-sm sm:text-lg  ">
           A Private Commitment by Dip || All Rights Reserved.
         </p></div>
     );
