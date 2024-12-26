@@ -90,7 +90,7 @@ const Register = () => {
           <h1 className="text-4xl font-bold ">Creating Profile...</h1>
         </div>
       ) : (
-        <div className="hero bg-gray-200 py-20">
+        <div className="hero py-20">
           <div className="hero-content flex-col w-11/12 sm:w-6/12">
             <div className="text-center">
               <h1 className="text-5xl font-bold">Sign Up Now!</h1>

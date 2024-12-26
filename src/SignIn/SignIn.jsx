@@ -64,7 +64,7 @@ const SignIn = () => {
         <title>LogIn - Study Together</title>
       </Helmet>
 
-      <div className="hero bg-gray-200 py-20">
+      <div className="hero  py-20">
         <div className="hero-content flex-col w-11/12 sm:w-6/12">
           <div className="text-center">
             <h1 className="text-3xl sm:text-5xl font-bold">Login now!</h1>

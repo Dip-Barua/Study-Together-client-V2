@@ -149,15 +149,16 @@ const PendingAssignment = () => {
         <div className="modal modal-open">
           <div className="modal-box">
             <h2 className="text-2xl font-bold mb-4">Grade Assignment</h2>
-            <p>
+            <p>Url : 
               <a
                 href={formatUrl(selectedAssignment?.googleDocLink)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500"
               >
-                View Google Doc
+                Click To View Google Doc
               </a>
+              <p className='text-lg'>Note : {selectedAssignment.note}</p>
             </p>
             <textarea
               className="textarea textarea-bordered w-full mt-4"

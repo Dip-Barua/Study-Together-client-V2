@@ -33,7 +33,7 @@ We are excited to bring these features to the platform to make **Study Together*
 ### Live URL
 
 You can check out the live version of the website here:  
-[Live Site](https://your-live-url.com)
+[Live Site](https://project11-study-together.web.app/)
 
 ## Key Features
 

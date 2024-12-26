@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Faq from '../components/Faq/Faq';
+import screen from '../assets/hero.mp4';
+import bg from '../assets/BG.png';
 
 
 const Home = () => {
@@ -24,7 +26,7 @@ const Home = () => {
   <div className="carousel-item w-full h-full relative rounded-2xl">
     <div className="w-full h-full relative">
       <img
-        src="/src/assets/BG.jpeg"
+        src={bg}
         alt="Background"
         className="w-full h-full rounded-2xl object-cover"
       />
@@ -51,7 +53,7 @@ const Home = () => {
           muted
           playsInline
         >
-          <source src="/src/assets/New folder/hero.mp4" type="video/mp4" />
+          <source src={screen} type="video/mp4" />
         </video>
       </div>
     </div>
@@ -117,7 +119,7 @@ const Home = () => {
             <div className="card w-full bg-base-100 shadow-xl" data-aos="fade-up">
                 <figure>
                     <img 
-                        src="https://thumbs.dreamstime.com/z/review-concept-illustration-review-concept-illustration-idea-feedback-business-people-102468072.jpg" 
+                        src="https://img.freepik.com/free-vector/review-concept-illustration-idea-feedback-business-people_613284-1724.jpg" 
                         alt="Submit Assignments" 
                         className="w-full h-48 object-cover"
                     />

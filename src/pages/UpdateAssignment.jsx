@@ -186,12 +186,11 @@ const UpdateAssignment = () => {
           <select
             id="difficulty"
             name="difficulty"
-            value={assignment.difficulty || ''}
+            value={assignment.difficulty}
             onChange={(e) => setAssignment({ ...assignment, difficulty: e.target.value })}
             className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
             required
           >
-            <option value="">Select Difficulty Level</option>
             <option value="Easy">Easy</option>
             <option value="Medium">Medium</option>
             <option value="Hard">Hard</option>

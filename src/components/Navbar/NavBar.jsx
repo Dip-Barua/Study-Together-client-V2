@@ -59,7 +59,12 @@ const NavBar = () => {
             <li><NavLink to="/about" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>About</NavLink></li>
             <li><NavLink to="/assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Assignments</NavLink></li>
             {user?.email ? (
-              <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>
+              <>
+                            <li><NavLink to="/pending-assignments" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Pending Assignments</NavLink></li>
+                            {/* <li><NavLink to="/create-assignment" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Create Assignment</NavLink></li>
+                            <li><NavLink to="/my-attempted-assignment" className={({ isActive }) => (isActive ? 'underline font-bold' : '')}>Attempted Assignment</NavLink></li> */}
+
+              </>
             ) : null}
           </ul>
         </div>
@@ -93,7 +98,7 @@ const NavBar = () => {
           </button>
         </div>
       </div>
-      <Tooltip id="my-tooltip" />
+      <Tooltip id="my-tooltip" className='z-20 font-bold'/>
     </div>
   );
 };
