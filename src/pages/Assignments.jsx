@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../components/AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Assignments = () => {
     const [assignments, setAssignments] = useState([]);
@@ -96,6 +97,7 @@ const Assignments = () => {
 
     return (
         <div className='py-20'>
+            <Helmet><title>Assignments</title></Helmet>
             <h1 className='text-5xl text-center my-5 font-bold'>Assignments</h1>
 
             <div className="w-11/12 sm:w-4/12 mx-auto justify-end flex mb-8">

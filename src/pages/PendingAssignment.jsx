@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { authContext } from '../components/AuthProvider/AuthProvider';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const PendingAssignment = () => {
   const { user } = useContext(authContext);
@@ -103,6 +104,7 @@ const PendingAssignment = () => {
 
   return (
     <div>
+      <Helmet><title>Pending Assignments</title></Helmet>
       <h1 className="text-5xl font-bold text-center my-12">Pending Assignments</h1>
 
       {pendingAssignments.length === 0 ? (

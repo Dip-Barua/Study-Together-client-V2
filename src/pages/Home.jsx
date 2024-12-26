@@ -18,7 +18,7 @@ const Home = () => {
 
     return (
         <div>
-            <Helmet>Home - StudyTogether</Helmet>
+            <Helmet><title>Home - StudyTogether</title> </Helmet>
             <div className="carousel w-[98%] flex mx-auto">
             <div className="w-full h-[60vh] mx-auto carousel">
   <div className="carousel-item w-full h-full relative rounded-2xl">

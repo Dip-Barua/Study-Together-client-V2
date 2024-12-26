@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authContext } from "../components/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const UpdateProfile = () => {
   const { user, manageProfile } = useContext(authContext); 
@@ -27,7 +28,7 @@ const UpdateProfile = () => {
     manageProfile(name, photoURL)
       .then(() => {
         setIsLoading(false);
-        navigate("/dashboard"); 
+        navigate("/"); 
       })
       .catch((error) => {
         setIsLoading(false);
@@ -37,6 +38,7 @@ const UpdateProfile = () => {
 
   return (
     <div className="container mx-auto p-8 ">
+      <Helmet><title>Update Profile</title></Helmet>
       <h1 className="text-4xl font-bold text-center mb-6">Update Profile</h1>
 
       <form onSubmit={handleUpdate} className="max-w-lg mx-auto p-6 rounded-2xl shadow-xl">
