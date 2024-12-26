@@ -12,7 +12,7 @@ const Assignments = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/assignments')
+        fetch('https://study-together-server-one.vercel.app/assignments')
             .then((res) => res.json())
             .then((data) => setAssignments(data));
     }, []);
@@ -50,7 +50,7 @@ const Assignments = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/assignments/${assignmentId}`, {
+                fetch(`https://study-together-server-one.vercel.app/assignments/${assignmentId}`, {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userEmail: user.email }),
@@ -165,7 +165,8 @@ const Assignments = () => {
                         </div>
                     ))
                 ) : (
-                    <p className="text-center text-2xl font-bold">No assignments found.</p>
+                    <p className="text-center ">          <span className="loading loading-spinner text-center loading-md"></span>
+ </p>
                 )}
             </div>
         </div>

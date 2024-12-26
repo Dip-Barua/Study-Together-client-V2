@@ -14,7 +14,7 @@ const ViewAssignment = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/assignments/${id}`)
+        fetch(`https://study-together-server-one.vercel.app/assignments/${id}`)
             .then(res => res.json())
             .then(data => setAssignment(data));
     }, [id]);
@@ -38,7 +38,7 @@ const ViewAssignment = () => {
             userName: user.displayName,
         };
 
-        fetch(`http://localhost:5000/submit-assignment/${id}`, {
+        fetch(`https://study-together-server-one.vercel.app/submit-assignment/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

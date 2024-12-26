@@ -12,11 +12,11 @@ const MyAttemptedAssignment = () => {
             return;
         }
 
-        // fetch(`http://localhost:5000/my-submissions?email=${user.email}`)
+        // fetch(`https://study-together-server-one.vercel.app/my-submissions?email=${user.email}`)
         //     .then((res) => res.json())
         //     .then((data) =>  setSubmissions(data.submissions))
 
-        axios.get(`http://localhost:5000/my-submissions?email=${user.email}`, {
+        axios.get(`https://study-together-server-one.vercel.app/my-submissions?email=${user.email}`, {
             withCredentials: true,
             
         })

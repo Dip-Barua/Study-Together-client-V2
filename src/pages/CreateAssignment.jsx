@@ -46,7 +46,7 @@ const CreateAssignment = () => {
         };
     
         try {
-            const response = await fetch('http://localhost:5000/assignments', {
+            const response = await fetch('https://study-together-server-one.vercel.app/assignments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

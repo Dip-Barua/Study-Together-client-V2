@@ -21,7 +21,7 @@ const PendingAssignment = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/pending-assignments?email=${user.email}`, {
+    axios.get(`https://study-together-server-one.vercel.app/pending-assignments?email=${user.email}`, {
       withCredentials: true,
     })
       .then((res) => {
@@ -72,7 +72,7 @@ const PendingAssignment = () => {
       return;
     }
 
-    axios.put(`http://localhost:5000/give-marks/${selectedAssignment._id}`, {
+    axios.put(`https://study-together-server-one.vercel.app/give-marks/${selectedAssignment._id}`, {
       marks,            
       feedback,         
       examinerEmail: user.email,  
@@ -171,6 +171,7 @@ const PendingAssignment = () => {
               placeholder="Enter obtained marks"
               value={marks}
               onChange={(e) => setMarks(e.target.value)}
+              min={0}
             />
             <div className="modal-action">
               <button className="btn btn-primary" onClick={submitMarks}>

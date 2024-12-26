@@ -26,7 +26,7 @@ const UpdateAssignment = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/assignments/${id}`)
+    axios.get(`https://study-together-server-one.vercel.app/assignments/${id}`)
       .then((response) => {
         setAssignment({
           title: response.data.title,
@@ -54,7 +54,7 @@ const UpdateAssignment = () => {
       return;
     }
 
-    axios.put(`http://localhost:5000/assignments/${id}`, assignment)
+    axios.put(`https://study-together-server-one.vercel.app/assignments/${id}`, assignment)
       .then((response) => {
         if (response.data.success) {
           Swal.fire('Updated!', 'The assignment has been updated successfully.', 'success');
