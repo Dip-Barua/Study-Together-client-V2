@@ -38,7 +38,7 @@ import About from "../pages/About";
         { path: "/view-assignment/:id",
              element: <PrivateRoute><ViewAssignment/>  </PrivateRoute> },
         { path: "/my-attempted-assignment",
-             element: <MyAttemptedAssignment/> },
+             element: <PrivateRoute> <MyAttemptedAssignment/> </PrivateRoute> },
         { path: "/pending-assignments",
              element: <PrivateRoute> <PendingAssignment/></PrivateRoute>  },
         { path: "/about",

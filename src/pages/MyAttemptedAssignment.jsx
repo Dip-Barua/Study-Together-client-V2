@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
-import Swal from 'sweetalert2';
 import { authContext } from '../components/AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const MyAttemptedAssignment = () => {
     const { user } = useContext(authContext);
@@ -11,20 +11,16 @@ const MyAttemptedAssignment = () => {
             return;
         }
 
-        fetch(`http://localhost:5000/my-submissions?email=${user.email}`)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log('Fetched submissions:', data); 
-                if (data.success) {
-                    setSubmissions(data.submissions); 
-                } else {
-                    Swal.fire('Error!', 'No submissions found.', 'error');
-                }
-            })
-            .catch((error) => {
-                console.error('Error fetching submissions:', error);
-                Swal.fire('Error!', 'Failed to fetch your submissions.', 'error');
-            });
+        // fetch(`http://localhost:5000/my-submissions?email=${user.email}`)
+        //     .then((res) => res.json())
+        //     .then((data) =>  setSubmissions(data.submissions))
+
+        axios.get(`http://localhost:5000/my-submissions?email=${user.email}`, {
+            withCredentials: true,
+            
+        })
+        .then((res) => setSubmissions(res.data.submissions) )
+            
     }, [user]);
 
     return (

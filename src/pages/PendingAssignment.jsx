@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
 import { authContext } from '../components/AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const PendingAssignment = () => {
   const { user } = useContext(authContext);
@@ -19,13 +20,14 @@ const PendingAssignment = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/pending-assignments?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    axios.get(`http://localhost:5000/pending-assignments?email=${user.email}`, {
+      withCredentials: true,
+    })
+      .then((res) => {
+        console.log(res.data);
 
-        if (data.success) {
-          setPendingAssignments(data.submissions);
+        if (res.data.success) {
+          setPendingAssignments(res.data.submissions);
         } else {
           Swal.fire('Error!', 'Failed to fetch pending assignments.', 'error');
         }
@@ -68,19 +70,14 @@ const PendingAssignment = () => {
       Swal.fire('Error!', 'Please fill in both marks and feedback.', 'error');
       return;
     }
-  
-    fetch(`http://localhost:5000/give-marks/${selectedAssignment._id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        marks,            
-        feedback,         
-        examinerEmail: user.email,  
-      }),
+
+    axios.put(`http://localhost:5000/give-marks/${selectedAssignment._id}`, {
+      marks,            
+      feedback,         
+      examinerEmail: user.email,  
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
+      .then((res) => {
+        if (res.data.success) {
           Swal.fire('Success!', 'Marks and feedback submitted successfully.', 'success');
           setModalIsOpen(false);
           setPendingAssignments((prevState) =>

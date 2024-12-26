@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from 'react-helmet';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 const UpdateAssignment = () => {
   const { id } = useParams();
@@ -25,23 +26,23 @@ const UpdateAssignment = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/assignments/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get(`http://localhost:5000/assignments/${id}`)
+      .then((response) => {
         setAssignment({
-          title: data.title,
-          description: data.description,
-          marks: data.marks,
-          difficulty: data.difficulty,
-          thumbnail: data.thumbnail,
-          dueDate: data.dueDate ? new Date(data.dueDate) : new Date(), 
-          createdBy: data.createdBy,
+          title: response.data.title,
+          description: response.data.description,
+          marks: response.data.marks,
+          difficulty: response.data.difficulty,
+          thumbnail: response.data.thumbnail,
+          dueDate: response.data.dueDate ? new Date(response.data.dueDate) : new Date(), 
+          createdBy: response.data.createdBy,
         });
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching assignment:", error);
         toast.error("Failed to load assignment details.");
+        setLoading(false);
       });
   }, [id]);
 
@@ -53,16 +54,9 @@ const UpdateAssignment = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/assignments/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(assignment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
+    axios.put(`http://localhost:5000/assignments/${id}`, assignment)
+      .then((response) => {
+        if (response.data.success) {
           Swal.fire('Updated!', 'The assignment has been updated successfully.', 'success');
           navigate('/assignments');
         } else {
@@ -98,7 +92,7 @@ const UpdateAssignment = () => {
           <div className="card my-auto text-start gap-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-start">{assignment.title}</h2>
             <div className="badge badge-accent p-2 sm:mt-4 ">{assignment.difficulty}</div>
-            <p className="text-gray-800 text-md sm:text-lg">{assignment.description}</p>
+            <p className=" text-md sm:text-lg">{assignment.description}</p>
 
             <p className="text-md sm:text-xl font-bold text-gray-500">
               <span className="font-bold text-md text-black sm:text-xl">Marks:</span> {assignment.marks}
@@ -123,7 +117,7 @@ const UpdateAssignment = () => {
 
       <h1 className="text-3xl sm:text-5xl text-center font-bold my-5">Update Assignment</h1>
 
-      <form onSubmit={handleUpdate} className="w-11/12 sm:max-w-3xl mx-auto p-6 border-2 bg-white border-gray-300 rounded-2xl mb-10 shadow-lg">
+      <form onSubmit={handleUpdate} className="w-11/12 sm:max-w-3xl mx-auto p-6 border-2  border-gray-300 rounded-2xl mb-10 shadow-lg">
         <div className="mb-4">
           <label htmlFor="title" className="block text-lg sm:text-xl font-bold text-black">
             Title
@@ -135,7 +129,7 @@ const UpdateAssignment = () => {
             value={assignment.title}
             onChange={(e) => setAssignment({ ...assignment, title: e.target.value })}
             placeholder="Assignment Title"
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
           />
         </div>
 
@@ -149,7 +143,7 @@ const UpdateAssignment = () => {
             value={assignment.description}
             onChange={(e) => setAssignment({ ...assignment, description: e.target.value })}
             placeholder="Assignment Description"
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
             rows="4"
           />
         </div>
@@ -165,7 +159,7 @@ const UpdateAssignment = () => {
             value={assignment.thumbnail}
             onChange={(e) => setAssignment({ ...assignment, thumbnail: e.target.value })}
             placeholder="Thumbnail URL"
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
           />
         </div>
 
@@ -180,7 +174,7 @@ const UpdateAssignment = () => {
             value={assignment.marks}
             onChange={(e) => setAssignment({ ...assignment, marks: e.target.value })}
             placeholder="Marks"
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
             min={0}
           />
         </div>
@@ -194,7 +188,7 @@ const UpdateAssignment = () => {
             name="difficulty"
             value={assignment.difficulty || ''}
             onChange={(e) => setAssignment({ ...assignment, difficulty: e.target.value })}
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
             required
           >
             <option value="">Select Difficulty Level</option>
@@ -211,7 +205,7 @@ const UpdateAssignment = () => {
           <DatePicker
             selected={assignment.dueDate}
             onChange={(date) => setAssignment({ ...assignment, dueDate: date })}
-            className="w-full p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-full p-3 border  border-gray-300 rounded-3xl mt-2"
             minDate={new Date()}
             dateFormat="yyyy/MM/dd"
           />
@@ -227,7 +221,7 @@ const UpdateAssignment = () => {
             name="createdBy"
             value={assignment.createdBy.name}
             disabled
-            className="w-6/12 p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-6/12 p-3 border  border-gray-300 rounded-3xl mt-2"
           />
           <input
             type="email"
@@ -235,7 +229,7 @@ const UpdateAssignment = () => {
             name="createdByEmail"
             value={assignment.createdBy.email}
             disabled
-            className="w-6/12 p-3 border bg-gray-50 border-gray-300 rounded-3xl mt-2"
+            className="w-6/12 p-3 border  border-gray-300 rounded-3xl mt-2"
           />
         </div>
 

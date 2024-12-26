@@ -66,7 +66,7 @@ const NavBar = () => {
         <div className="navbar-end gap-10 mx-10 hidden lg:flex">
           {user?.email ? (
             <div className="flex navbar-end gap-5 mx-10 relative">
-              <button onClick={toggleDropdown}>
+              <button onClick={toggleDropdown} className='btn btn-ghost bg-transparent hover:bg-transparent rounded-full'>
                 <img src={user.photoURL} className="rounded-full w-16 h-16" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} alt="User" />
               </button>
               {isDropdownVisible && (
