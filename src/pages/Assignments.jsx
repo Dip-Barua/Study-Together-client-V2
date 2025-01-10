@@ -134,10 +134,10 @@ const Assignments = () => {
                             </div>
 
                             <h2 className="text-2xl font-bold mt-2">{assignment.title}</h2>
-                            <p className="text-gray-700 text-2xl">
+                            <p className=" text-2xl">
                                 <span className="font-bold text-xl">Marks :</span> {assignment.marks}
                             </p>
-                            <p className="text-gray-700">
+                            <p className="">
                                 <span className="font-bold text-xl">Description :</span>{' '}
                                 {assignment.description.slice(0, 100)}... <br />
                                 (view assignment to read more)
