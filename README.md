@@ -2,6 +2,8 @@
 
 ## Project Overview
 
+![alt text](image.png)
+
 **Study Together** is an online platform designed to help students collaborate on assignments and study together. This platform allows users to create assignments, submit them, grade their friends' assignments, and manage all tasks in a collaborative environment. Built using the MERN stack (MongoDB, Express.js, React, and Node.js), this application provides an intuitive and interactive user experience for students to stay organized and motivated in their studies.
 
 ## Purpose
