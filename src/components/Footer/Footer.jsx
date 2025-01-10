@@ -15,7 +15,7 @@ const Footer = () => {
 <hr className='w-10/12 mx-auto my-8 ' />
             <div className=" flex w-9/12 mx-auto text-base-content flex-col sm:flex-row justify-between p-10">
   <nav className=' flex flex-col  mb-10'> 
-       <h6 className="text-2xl  font-bold text-black my-4">
+       <h6 className="text-2xl  font-bold  my-4">
   CONTACT US</h6>
           <a className="link link-hover text-xl flex items-center ">
             <FaPhoneAlt className="text-2xl mr-3  text-green-500" />
@@ -39,7 +39,7 @@ const Footer = () => {
           </a>
   </nav>
   <nav className=' flex flex-col  mb-10'>
-    <h6 className="text-2xl mx-auto font-bold text-black my-4">
+    <h6 className="text-2xl mx-auto font-bold text- my-4">
       SERVICES</h6>
     <a className="link link-hover text-sm sm:text-xl">Upcoming Events</a>
     <a className="link link-hover text-sm sm:text-xl">Polular Topics</a>
@@ -47,14 +47,14 @@ const Footer = () => {
     <a className="link link-hover text-sm sm:text-xl">Sectors</a>
   </nav>
   <nav className=' flex flex-col '>
-  <h6 className="text-2xl mx-auto font-bold text-black my-4">
+  <h6 className="text-2xl mx-auto font-bold text- my-4">
   Community</h6>
     <a className="link link-hover text-sm sm:text-xl">About us</a>
     <a className="link link-hover text-sm sm:text-xl">Our Motive</a>
     <a className="link link-hover text-sm sm:text-xl">Contact</a>
   </nav>
   <nav className=' flex flex-col '>
-  <h6 className="text-2xl mx-auto font-bold text-black my-4">
+  <h6 className="text-2xl mx-auto font-bold text- my-4">
   LEGAL</h6>
     <a className="link link-hover text-sm sm:text-xl">Terms and Conditions</a>
     <a className="link link-hover text-sm sm:text-xl">Privacy policy</a>
