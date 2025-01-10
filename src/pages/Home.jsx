@@ -19,7 +19,7 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div className=''>
             <Helmet><title>Home - StudyTogether</title> </Helmet>
             <div className="carousel w-[98%] flex mx-auto">
             <div className="w-full h-[60vh] mx-auto carousel">
@@ -31,7 +31,7 @@ const Home = () => {
         className="w-full h-full rounded-2xl object-cover"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-pink-600 to-black opacity-70 rounded-2xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-purple-500 to-black opacity-70 rounded-2xl"></div>
     </div>
 
     <div className="absolute inset-0 flex flex-col-reverse sm:flex-row justify-center items-center w-full h-full">
@@ -55,6 +55,7 @@ const Home = () => {
         >
           <source src={screen} type="video/mp4" />
         </video>
+        
       </div>
     </div>
   </div>
@@ -72,7 +73,7 @@ const Home = () => {
         <img src="https://th.bing.com/th/id/OIP.sw-nmSO4L_nTPi5sQVWDawHaDt?" alt="" className="w-full h-full object-cover" />
     </div>
     <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
-        <img src="https://th.bing.com/th/id/OIF.Ny2srlQwNCVKeCUOuCMNYw?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
+        <img src="https://th.bing.com/th/id/R.b1d8f4fdb30ffc1c225865a981627a92?rik=8Z9QHwk2FqLVPg&pid=ImgRaw&r=0" alt="" className="w-full h-full object-cover" />
     </div>
     <div className="w-full sm:w-1/12 h-8 sm:h-16 border-gray-500 border">
         <img src="https://th.bing.com/th/id/OIP.xp_gP4N6JVcGfHcGVr7acgHaD6?rs=1&pid=ImgDetMain" alt="" className="w-full h-full object-cover" />
@@ -163,7 +164,7 @@ const Home = () => {
             <div className="card w-full bg-base-100 shadow-xl" data-aos="fade-up">
                 <figure>
                     <img 
-                        src="https://th.bing.com/th?id=OIF.HpO31Zi9ZbZ9F0zl%2fvRQfQ&rs=1&pid=ImgDetMain" 
+                        src="https://net2source.eu/wp-content/uploads/2020/04/Solutions-Services.jpg" 
                         alt="Personal Dashboard" 
                         className="w-full h-48 object-cover"
                     />
