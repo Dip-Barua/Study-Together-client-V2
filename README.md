@@ -59,3 +59,44 @@ You can check out the live version of the website here:
 - **Deployment**: Firebase (client), Vercel (server)
   
 
+---
+
+## Installation and Setup
+1. Clone the repositories:
+   ```bash
+   git clone https://github.com/your-username/Study-Together-client.git
+   git clone https://github.com/your-username/Study-Together-server.git
+   ```
+2. Install dependencies:
+   - Client:
+     ```bash
+     cd edukator-client
+     npm install
+     ```
+   - Server:
+     ```bash
+     cd edukator-server
+     npm install
+     ```
+3. Set up environment variables:
+   - **Client**:
+     - Create a `.env` file in the root directory.
+     - Add your Firebase configuration.
+   - **Server**:
+     - Create a `.env` file in the root directory.
+     - Add your MongoDB credentials and JWT secret.
+4. Start the applications:
+   - Client:
+     ```bash
+     npm run start
+     ```
+   - Server:
+     ```bash
+     npm run dev
+     ```
+
+---
+
+## Future Improvements
+- Implement email verification for new user registrations.
+- Enhance payment gateway integration.
