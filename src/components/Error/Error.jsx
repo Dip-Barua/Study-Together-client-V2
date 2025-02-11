@@ -4,9 +4,10 @@ const Error = () => {
     const error = useRouteError();
     console.error(error);
 
+
     return (
         <div className="flex justify-center items-center text-center h-screen">
-            <div id="error-page">
+            <div id="error-page page-toggler">
                 <h1 className="my-4 font-bold text-8xl">404</h1>
                 <h1 className="my-2 font-bold text-3xl">Oops! Page not found.</h1>
                 <p className="text-2xl">Sorry, the page you are looking for does not exists in our directory</p>
