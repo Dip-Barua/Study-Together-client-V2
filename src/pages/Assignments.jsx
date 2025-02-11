@@ -165,8 +165,10 @@ const Assignments = () => {
                         </div>
                     ))
                 ) : (
-                    <p className="text-center ">          <span className="loading loading-spinner text-center loading-md"></span>
- </p>
+                    <div>
+                        <p className="text-center w-6/12">          <span className="loading loading-spinner text-center loading-md"></span>
+                        </p>
+                        </div>
                 )}
             </div>
         </div>
